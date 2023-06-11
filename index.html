@@ -11,13 +11,18 @@
 <body>
 
 <script>
+    const INCREMENTAR = 'INCREMENTAR';
+    const SOMAR = 'SOMA';
+    const INCREMENTAR = 'INCREMENTAR';
+
+
     const initialState = 10
 
     function reducer(state = initialState, action) {
-        if (action.type === 'incrementar') {
+        if (action.type === INCREMENTAR) {
             return state + 1;
         }
-        if (action.type === 'somar') {
+        if (action.type === SOMAR) {
             return state + action.payload
         }
         return state
@@ -28,8 +33,8 @@
     let state = store.getState();
     console.log(state)
 
-    store.dispatch({type: "somar", payload: 25})
-    store.dispatch({type: 'incrementar'})
+    store.dispatch({type: SOMAR, payload: 25})
+    store.dispatch({type: INCREMENTAR})
     state = store.getState();
     console.log(state)
 </script>
