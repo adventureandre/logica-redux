@@ -11,10 +11,19 @@
 <body>
 
 <script>
+
+    //Constantes
     const INCREMENTAR = 'INCREMENTAR';
     const SOMAR = 'SOMA';
-    const INCREMENTAR = 'INCREMENTAR';
 
+    //Action Creator
+    function incrementar(){
+      return {type: INCREMENTAR}
+    }
+
+    function  somar(payload){
+        return{type: SOMAR, payload}
+    }
 
     const initialState = 10
 
@@ -33,8 +42,8 @@
     let state = store.getState();
     console.log(state)
 
-    store.dispatch({type: SOMAR, payload: 25})
-    store.dispatch({type: INCREMENTAR})
+    store.dispatch(somar(12))
+    store.dispatch(incrementar())
     state = store.getState();
     console.log(state)
 </script>
