@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Redux</title>
+    <script src="redux.min.js"></script>
+</head>
+<body>
+
+<script>
+    const initialState = 10
+
+    function reducer(state = initialState, action) {
+        if (action.type === 'incrementar') {
+            return state + 1;
+        }
+        if (action.type === 'somar') {
+            return state + action.payload
+        }
+        return state
+
+    }
+
+    const store = Redux.createStore(reducer)
+    let state = store.getState();
+    console.log(state)
+
+    store.dispatch({type: "somar", payload: 25})
+    store.dispatch({type: 'incrementar'})
+    state = store.getState();
+    console.log(state)
+</script>
+
+</body>
+</html>
