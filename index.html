@@ -27,17 +27,19 @@
         return {type: SOMAR, payload}
     }
 
-    const initialState = 10
+    const initialState = 0
 
     function reducer(state = initialState, action) {
-        if (action.type === INCREMENTAR) {
-            return state + 1;
-        }
-        if (action.type === SOMAR) {
-            return state + action.payload
-        }
-        return state
+        switch (action.type) {
+            case INCREMENTAR:
+                return state + 1;
 
+            case SOMAR:
+                return state + action.payload;
+
+            default:
+                return state
+        }
     }
 
     const store = Redux.createStore(reducer)
@@ -49,16 +51,7 @@
     }
 
     render()
-
     store.subscribe(render)
-    store.dispatch(somar(11));
-
-
-    //Exemplo de unsubscribe em redux ele para de ativar o codigo
-     const unsubscribe = store.subscribe(()=>{
-        console.log('Disparando!')
-    })
-    unsubscribe()
 
 
     const button = document.getElementById('button');
