@@ -51,6 +51,14 @@
     render()
 
     store.subscribe(render)
+    store.dispatch(somar(11));
+
+
+    //Exemplo de unsubscribe em redux ele para de ativar o codigo
+     const unsubscribe = store.subscribe(()=>{
+        console.log('Disparando!')
+    })
+    unsubscribe()
 
 
     const button = document.getElementById('button');
