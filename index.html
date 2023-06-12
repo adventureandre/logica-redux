@@ -6,6 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Redux</title>
+    <button id="button">incremente</button>
     <script src="redux.min.js"></script>
 </head>
 <body>
@@ -44,8 +45,9 @@
 
     store.dispatch(somar(12))
     store.dispatch(incrementar())
-    state = store.getState();
-    console.log(state)
+
+    const button = document.getElementById('button');
+    button.addEventListener("click",()=>store.dispatch(incrementar()))
 </script>
 
 </body>
