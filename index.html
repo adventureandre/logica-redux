@@ -6,6 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Redux</title>
+    <h1>Total: <span id="total"></span></h1>
     <button id="button">incremente</button>
     <script src="redux.min.js"></script>
 </head>
@@ -18,12 +19,12 @@
     const SOMAR = 'SOMA';
 
     //Action Creator
-    function incrementar(){
-      return {type: INCREMENTAR}
+    function incrementar() {
+        return {type: INCREMENTAR}
     }
 
-    function  somar(payload){
-        return{type: SOMAR, payload}
+    function somar(payload) {
+        return {type: SOMAR, payload}
     }
 
     const initialState = 10
@@ -40,14 +41,20 @@
     }
 
     const store = Redux.createStore(reducer)
-    let state = store.getState();
-    console.log(state)
 
-    store.dispatch(somar(12))
-    store.dispatch(incrementar())
+    function render() {
+        let state = store.getState();
+        const total = document.getElementById('total');
+        total.innerText = state;
+    }
+
+    render()
+
+    store.subscribe(render)
+
 
     const button = document.getElementById('button');
-    button.addEventListener("click",()=>store.dispatch(incrementar()))
+    button.addEventListener("click", () => store.dispatch(incrementar()))
 </script>
 
 </body>
